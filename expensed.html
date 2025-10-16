@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Expenses</title>
+<style>
+    body{
+        background-color: darkblue;
+    }
+    .blur-active{
+        filter: blur(8px);
+    }
+</style>
+<link rel="stylesheet" href="./css/expences.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"crossorigin="anonymous"/>
+</html>
+<body class="text-white min-h-screen flex flex-col">
+    <div class="mainContainer max-w-6xl mx-auto w-full px-4 py-6 flex-1">
+
+    <!-- 🧭 Navbar -->
+    <nav class="sticky top-0 z-50 relative backdrop-blur-md shadow-md rounded-md px-5 py-3 flex justify-between items-center">
+    <!-- Logo -->
+    <h1 class="text-xl font-bold text-white">💰 Expenses</h1>
+
+    <!-- Desktop Menu -->
+    <ul id="menu" class="hidden md:flex gap-6 font-semibold text-white">
+        <li class="item"><a href="index.html" class="hover:text-teal-600">Home</a></li>
+        <li class="item"><a href="updates.html" class="hover:text-teal-600">Updates</a></li>
+        <li class="item"><a href="expensed.html" class="hover:text-teal-600">Expenses</a></li>
+        <li class="item"><a href="dasboard.html" class="hover:text-teal-600">Dashboard</a></li>
+    </ul>
+
+    <!-- Search & Hamburger -->
+    <div class="flex items-center gap-3">
+        <input type="text" id="searchInput" placeholder="Search..."
+        class="hidden sm:block px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400" />
+        <i id="menu__icon" class="fa-solid fa-bars-staggered text-2xl text-white cursor-pointer md:hidden"></i>
+    </div>
+
+    <!-- Mobile Menu -->
+    <ul id="mobileMenu"
+        class="absolute top-full left-0 w-full text-white backdrop-blur-md shadow-md rounded-b-2xl hidden flex-col items-center gap-4 py-4 md:hidden text-center">
+        <li class="item w-full"><a href="index.html" class="block w-full py-5 hover:text-teal-600">Home</a></li>
+        <li class="item w-full"><a href="updates.html" class="block w-full py-5 hover:text-teal-600">Updates</a></li>
+        <li class="item w-full"><a href="expensed.html" class="block w-full py-5 hover:text-teal-600">Expenses</a></li>
+        <li class="item w-full"><a href="dasboard.html" class="block w-full py-5 hover:text-teal-600">Dashboard</a></li>
+    </ul>
+    </nav>
+
+
+        <!-- 🧮 Main Content -->
+        <div class="mainContain space-y-8">
+                    <!-- 🧾 App Title -->
+        <h2 class="text-2xl md:text-3xl font-bold text-center mt-8 mb-6">📋 Every Day Expenses</h2>
+
+        <!-- 🧾 Form Section -->
+        <div class="mainForm backdrop-blur-sm shadow-lg rounded-md p-5">
+            <div class="mb-4">
+            <h3 class="text-xl font-semibold mb-2">📅 Add Expenses Data</h3>
+            <p id="total__money" class="text-lg font-medium">Total Expenses: ৳0</p>
+            </div>
+
+            <form id="studentForm" class="flex flex-col md:flex-row gap-4 items-start md:items-end">
+            <div class="flex flex-col gap-2 w-full md:w-auto flex-1">
+                <label for="expencesTk" class="font-medium">Custom Input:</label>
+                <input type="number" id="expencesTk" placeholder="Enter Total Tk" required
+                class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400 w-full" />
+            </div>
+
+            <button type="submit"
+                class="add bg-teal-600 hover:bg-green-600 text-white px-6 py-2 rounded-md transition duration-200 w-full md:w-auto">
+                Add Expense
+            </button>
+            </form>
+        </div>
+
+        <!-- 📊 Table Section -->
+        <div
+            class="tableContainer backdrop-blur-sm shadow-lg rounded-md">
+            <h2 class="text-xl font-semibold mb-4">📊 Table for Expenses Data</h2>
+            <table id="expencesTable" class="w-full border-collapse border border-white text-center">
+            <thead class="">
+                <tr>
+                <th class="border border-white py-2">ID</th>
+                <th class="border border-white py-2">Expenses Tk</th>
+                <th class="border border-white py-2">Date</th>
+                </tr>
+            </thead>
+            <tbody class="text-white"></tbody>
+            </table>
+        </div>
+
+        <!-- 🧹 Buttons -->
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+            <button id="deleteBtn"
+            class="btn bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md transition duration-200">
+            Delete Expense
+            </button>
+            <button id="restartBtn"
+            class="btn bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-md transition duration-200">
+            Restart
+            </button>
+        </div>
+        </div>
+    </div>
+
+    <!-- ✅ Scripts -->
+<script src="./script/navbar.js"></script>
+<script src="./script/expences.js"></script>
+</body>
+</html>
+

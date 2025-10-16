@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mill Management System</title>
+    <style>
+        body{
+            background-color: darkblue;
+        }
+        .blur-active{
+            filter: blur(8px);
+        }
+        @media (max-width: 768px) {
+            ul{
+                background: rgba(255, 255, 255, 0.15); /* transparent white layer */
+                backdrop-filter: blur(10px); /* main blur */
+                -webkit-backdrop-filter: blur(5px); /* Safari support */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 100;
+            }
+        }
+    </style>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous"/>
+</head>
+<body class="min-h-screen relative">
+
+    <!-- 🌐 Navbar -->
+    <nav class="sticky top-0 z-50 flex flex-wrap items-center justify-between backdrop-blur-md shadow-md p-4 rounded-xl mb-8 max-w-6xl mx-auto relative">
+        
+        <!-- 🧭 Desktop Menu -->
+        <ul class="hidden md:flex flex-wrap gap-6 font-medium text-white">
+            <li><a href="index.html" class="hover:text-teal-600">Home</a></li>
+            <li><a href="updates.html" class="hover:text-teal-600">Updates</a></li>
+            <li><a href="expensed.html" class="hover:text-teal-600">Expenses</a></li>
+            <li><a href="dashboard.html" class="hover:text-teal-600">Dashboard</a></li>
+        </ul>
+
+        <!-- 🔍 Search + Hamburger (Responsive layout) -->
+        <div class="flex w-full md:w-auto justify-between items-center mt-3 md:mt-0 md:justify-end gap-3">
+            <!-- 🍔 Hamburger (Left on mobile) -->
+            <i id="menu__icon" class="fa-solid fa-bars-staggered text-2xl text-white cursor-pointer md:hidden order-1"></i>
+
+            <!-- 🔍 Search Input (Right on mobile) -->
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search..."
+                class="order-2 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400 w-[70%] sm:w-[60%] md:w-auto"
+            />
+        </div>
+
+        <!-- 📱 Mobile Menu -->
+        <div id="mobileMenu" class="hidden absolute top-16 left-0 w-full shadow-lg rounded-b-lg p-4 py-lg-5 z-100">
+            <ul class="flex flex-col w-full text-center space-y-2">
+                <li><a href="index.html" class="block py-2 text-white hover:text-teal-600 w-full">Home</a></li>
+                <li><a href="updates.html" class="block py-2 text-white hover:text-teal-600 w-full">Updates</a></li>
+                <li><a href="expensed.html" class="block py-2 text-white hover:text-teal-600 w-full">Expenses</a></li>
+                <li><a href="dashboard.html" class="block py-2 text-white hover:text-teal-600 w-full">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <!-- 📋 Main Content -->
+    <div class="mainContain max-w-6xl mx-auto p-4 space-y-8">
+
+        <!-- 🧾 Title -->
+        <h2 class="text-3xl font-bold text-center text-white mb-4">📋 Students Mill Management</h2>
+
+        <!-- 🧍‍♂️ Student Add Form -->
+        <div class="backdrop-blur-sm shadow-lg rounded-2xl p-6 space-y-5">
+        <h3 class="text-xl font-semibold text-white">📅 Add First Data</h3>
+
+        <form id="studentForm" class="flex flex-col gap-6">
+            <!-- Name -->
+            <input
+            type="text"
+            id="name"
+            placeholder="Enter Name"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
+            />
+
+            <!-- Checkboxes -->
+            <div class="flex flex-wrap gap-4">
+            <label class="flex items-center gap-2 border border-white text-white rounded-md px-3 py-2 cursor-pointer">
+                <input type="checkbox" name="amount" value="500" class="accent-teal-500"> ৳500
+            </label>
+            <label class="flex items-center gap-2 border border-white text-white rounded-md px-3 py-2 cursor-pointer">
+                <input type="checkbox" name="amount" value="1000" class="accent-teal-500"> ৳1000
+            </label>
+            <label class="flex items-center gap-2 border border-white text-white rounded-md px-3 py-2 cursor-pointer">
+                <input type="checkbox" name="amount" value="1500" class="accent-teal-500"> ৳1500
+            </label>
+            <label class="flex items-center gap-2 border border-white text-white rounded-md px-3 py-2 cursor-pointer">
+                <input type="checkbox" name="amount" value="2000" class="accent-teal-500"> ৳2000
+            </label>
+            <label class="flex items-center gap-2 border border-white text-white rounded-md px-3 py-2 cursor-pointer">
+                <input type="checkbox" name="amount" value="2500" class="accent-teal-500"> ৳2500
+            </label>
+            </div>
+
+            <!-- Custom Input -->
+            <div class="flex flex-col md:flex-row md:items-end md:gap-4">
+            <div class="flex flex-col w-full md:w-auto gap-2">
+                <label for="studentTk" class="text-white font-medium">Custom Input:</label>
+                <input
+                type="number"
+                id="studentTk"
+                placeholder="Enter Total Tk"
+                required
+                class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
+                />
+            </div>
+
+            <button
+                type="submit"
+                class="add mt-3 md:mt-0 bg-teal-500 hover:bg-green-600 text-white px-6 py-2 rounded-md transition duration-200"
+            >
+                Add Student
+            </button>
+            </div>
+        </form>
+        </div>
+
+        <!-- 📊 Table -->
+        <div class="bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl p-6 overflow-x-auto">
+        <h2 class="text-xl font-semibold mb-4 text-gray-700">📊 Table For Show Data</h2>
+        <table id="studentTable" class="w-full border border-gray-400 text-center"></table>
+        </div>
+
+        <!-- 🗑️ Buttons -->
+        <div class="flex flex-col md:flex-row justify-center gap-4 mt-6">
+        <button id="deleteBtn" class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md transition duration-200">
+            Delete Student
+        </button>
+        <button id="restartBtn" class="bg-gray-400 hover:bg-gray-500 text-white px-6 py-2 rounded-md transition duration-200">
+            Restart
+        </button>
+        </div>
+
+        <p id="total__money" class="text-center text-lg font-semibold text-gray-700 mt-4">
+        Total Money: ৳0
+        </p>
+    </div>
+
+    <script src="./script/navbar.js"></script>
+    <script src="./script/index.js"></script>
+</body>
+</html>
+

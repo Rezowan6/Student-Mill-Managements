@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 📱 Mobile responsive setup -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Student List</title>
+        <!-- link font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- 🎨 External CSS file link -->
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/dasboard.css">
+</head>
+<body>
+    <div class="mainContainer">
+        <!-- create a navegation bar -->
+        <nav id="home">
+            <ul id="menu" class="contronResponsive">
+                <li class="item"><a href="index.html" class="link">Home</a></li>
+                <li class="item"><a href="updates.html" class="link">Updates</a></li>
+                <li class="item"><a href="expensed.html" class="link">Expences</a></li>
+                <li class="item"><a href="dasboard.html" class="link">Dashbord</a></li>
+            </ul>
+            <i class="fa-solid fa-bars-staggered fa-2x" id="menu__icon"></i>
+            <div id="searchBtn">
+                <input type="text" id="searchInput" placeholder="Search...">
+            </div>
+        </nav>
+
+        <!-- 🧾 App title-->
+        <h2>📋 Students Mill Management</h2>
+        <h2>Dasboard</h2>
+
+        <!-- ===============================
+            🧍‍♂️ Student Add Form Section
+        ================================== -->
+        <div class="studentDataManagement">
+            <div class="mainForm">
+                <h3>📅 Add First Data</h3>
+                <form id="studentForm">
+                    <!-- 🔹 Input student name-->
+                    <input type="text" id="name" placeholder="Enter Name" required>
+
+                    <!-- 🔹 Student's total money input-->
+                    <input type="number" id="studentTk" placeholder="Enter Total Tk" required>
+
+                    <!-- 🔹 Add button-->
+                    <button type="submit" class="add">Add Student</button>
+                </form>
+
+                <!-- ===============================
+                    🔍 Search Box Section
+                ================================== -->
+                <div class="search-box">
+                    <!-- 🔹 Input to search by student name -->
+                    <input type="text" id="search" placeholder="🔍 Search by Name...">
+                </div>
+            </div>
+
+            <!-- ===============================
+                📅 Monthly Data Add Section
+            ================================== -->
+            <div id="monthlyDataFormDiv" style="display:block;">
+                <h3>📅 Add Monthly Data</h3>
+
+                <!-- 🔹 To select the student whose monthly data we want to add -->
+                <select id="studentSelect"></select>
+
+                <!-- 🔹 Daily match (mill) input -->
+                <input type="number" id="tkInput" placeholder="Mill for the day" required>
+
+                <!-- 🔹 Button to add monthly data -->
+                <button id="addMonthDataBtn" class="add">Add Day Data</button>
+            </div>
+        </div>
+
+        <!-- ===============================
+            📊 Student Data Table Section
+        ================================== -->
+        <table id="studentTable">
+            <tr>
+                <th>ID</th>            <!-- Student serial number -->
+                <th>Name</th>          <!-- Student name -->
+                <th>Student Tk</th>    <!-- Total Tk -->
+                <th>Date Added</th>    <!-- Date of addition -->
+                <th>Actions</th>       <!-- Edit / Delete button -->
+                <th>Monthly Total</th> <!-- Total monthly sum -->
+            </tr>
+            <!-- 🔸 Data will be added below using JavaScript. -->
+        </table>
+
+        <!-- ===============================
+        💰 Total Money Display Section
+        ================================== -->
+        <p id="total">Total Money: ৳0</p>     <!-- সব ছাত্রের মোট টাকা -->
+        <p id="totalMill">Total Mill: 0</p>   <!-- সব ছাত্রের মোট মিল -->
+    </div>
+
+    <!-- ===============================
+        ⚙️ External JavaScript file link
+    ================================== -->
+    <script src="./script/navbar.js"></script>
+    <script src="./script/script.js"></script>
+</body>
+</html>
